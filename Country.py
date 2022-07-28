@@ -6,9 +6,9 @@
 def show_menu():
     print("Main Menu")
     print("----------------------------")
-    print("list - List All Contries")
-    print("add - Add a Country")
-    print("del - Delete a Country")
+    print("search - Country Name form Country Code")
+    print("add - Add a Country and Country Code")
+    print("del - Delete a Country and Country Code")
     print("exit - Exit the program")
     print(" ")
 
@@ -22,15 +22,17 @@ def display_codes(countries):
     print(codes_line)
 
 #Function to view country by code
-def list(countries):
+def show(countries):
     display_codes(countries)
     code = input("Enter country code: ")
     code = code.upper()
     if code in countries:
         name = countries[code]
-        print(f"Country name: {name}.\n")
+        print(f"Country name: {name}.")
+        print(" ")
     else:
-        print("There is no country with that code.\n")
+        print("There is no country with that code.")
+        print (" ")
  
 #Function to Add to dictionary
 def add(countries):
@@ -38,12 +40,14 @@ def add(countries):
     code = code.upper()
     if code in countries:
         name = countries[code]
-        print(f"{name} is already using this code.\n")
+        print(f"{name} is already using this code.")
+        print (" ")
     else:
         name = input("Enter country name: ")
         name = name.title()
         countries[code] = name
-        print(f"{name} was added.\n")
+        print(f"{name} was added.")
+        print (" ")
 
 #Function do remove from dictionary
 def remove(countries):
@@ -51,9 +55,11 @@ def remove(countries):
     code = code.upper()
     if code in countries:
         name = countries.pop(code)
-        print(f"{name} was deleted.\n")
+        print(f"{name} was deleted.")
+        print (" ")
     else:
-        print("There is no country with that code.\n")
+        print("There is no country with that code.")
+        print (" ")
 
 #Function do remove from dictionary
 def main():
@@ -65,8 +71,8 @@ def main():
     while True:        
         command = input("Command: ")
         command = command.lower()
-        if command == "list":
-            list(countries)   
+        if command == "search":
+            show(countries)   
         elif command == "add":
             add(countries)
         elif command == "del":
@@ -75,7 +81,8 @@ def main():
             print("Bye!")
             break
         else:
-            print("Not a valid command. Please try again.\n")
+            print("Not a valid command. Please try again.")
+            print (" ")
 
 
 if __name__ == "__main__":
